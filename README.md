@@ -1,6 +1,11 @@
 # Exercices Php
 
-## Créer et utiliser un objet
+Pour utiliser ce projet, créez-en un fork (Aller sur [le projet](https://github.com/Dreeckan/exercices-php) et cliquez sur le bouton "fork", en haut à droite de la page). 
+Vous pouvez ensuite utiliser la commande `git clone` pour récupérer ce projet sur votre machine et commencer à travailler.
+
+Je vous conseille de créer une branche pour chaque exercice (une branche pour l'exercice 1, une autre pour l'exercice 2, etc). Pour avoir une correction, créez une Pull Request et assignez `@Dreeckan` en tant que reviewer. Si besoin, ajoutez-moi sur votre projet.
+
+## 1. Créer et utiliser un objet
 
 - [ ] Créer une classe `Student` (fichier `classes/Student.php`)
 - [ ] Ajouter les propriétés :
@@ -18,7 +23,7 @@ spl_autoload_register(function ($class) {
 - [ ] Donner des valeurs aux différentes propriétés de votre objet
 - [ ] Afficher le contenu de votre objet avec la fonction `var_dump()`
 
-## Utiliser des getters et des setters
+### 1.1 Utiliser des getters et des setters
 
 - [ ] Dans l'objet `Student`, passer toutes les propriétés en `protected`
 - [ ] Ajouter les méthodes "getters" :
