@@ -1,7 +1,6 @@
 # Exercices Php
 
-Pour utiliser ce projet, créez-en un fork (Aller sur [le projet](https://github.com/Dreeckan/exercices-php) et cliquez sur le bouton "fork", en haut à droite de la page). 
-Vous pouvez ensuite utiliser la commande `git clone` pour récupérer ce projet sur votre machine et commencer à travailler.
+Utiliser la commande `git clone` pour récupérer ce projet sur votre machine et commencer à travailler.
 
 Je vous conseille de créer une branche pour chaque exercice (une branche pour l'exercice 1, une autre pour l'exercice 2, etc). Pour avoir une correction, créez une Pull Request et assignez `@Dreeckan` en tant que reviewer. Si besoin, ajoutez-moi sur votre projet.
 
@@ -35,3 +34,11 @@ spl_autoload_register(function ($class) {
   - [ ] `setName($name)` qui met à jour le contenu de la propriété `name` à partir de la variable `$name`
   - [ ] `setFirstName($firstname)` qui met à jour le contenu de la propriété `firstname` à partir de la variable `$firstname`
 - [ ] Mettre à jour votre fichier `index.php` pour en conserver le fonctionnement
+
+### 1.2. Espaces de nom et rangement
+
+- [ ] Créer un dossier `Person`
+- [ ] Créer une classe `Person` dans le fichier `Person/Person.php`
+- [ ] Ajouter le `namespace` de cette classe
+- [ ] Déplacer les propriétés `name` et `firstname` et les méthodes liées dans cette nouvelle classe
+- [ ] Faire en sorte que la classe `Student` étende la classe `Person`
