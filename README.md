@@ -13,7 +13,7 @@ spl_autoload_register(function ($class) {
 });
 ```
 - [ ] Inclure ce fichier dans `index.php` et ajouter un commentaire pour expliquer à quoi sert la fonction `spl_autoload_register`
-  
+
 - [ ] Créer une classe `Computer` (fichier `classes/Computer.php`)
 - [ ] Ajouter les propriétés :
   - [ ] `components` (composants) de type array
@@ -41,11 +41,11 @@ spl_autoload_register(function ($class) {
 - [ ] Créer un dossier `Computer`
 - [ ] Créer une classe `Desktop` (ordinateur fixe de type "tour") dans le fichier `Computer/Desktop.php`
 - [ ] Ajouter le `namespace` de cette classe
-- [ ] Faire en sorte que la classe `Desktop` étende la classe `Computer`
-- [ ] Dans index.php, créer un objet de type `Desktop` et vérifier qu'il ait les même propriétés et méthodes que l'objet Computer (et lui donner des valeurs différentes)
+- [ ] Faire en sorte que la classe `Desktop` étende la classe `Computer` (vous aurez également besoin d'appeler la classe `Computer` avec `use Computer`, juste après le namespace)
+- [ ] Dans index.php, créer un objet de type `Desktop` (utiliser également un `use` ou l'appeler par son nom complet `Computer\Desktop`) et vérifier qu'il ait les même propriétés et méthodes que l'objet Computer
 - [ ] Donner des valeurs aux différentes propriétés de votre objet
 - [ ] Afficher le contenu de votre objet avec la fonction `var_dump()`
-  
+
 - [ ] Sur le même modèle, créer les classes `Laptop` (ordinateur portable) et `Tablet` (tablette)
 - [ ] Créer / Instancier des objets de ces deux types dans `index.php` et en afficher le contenu avec `var_dump()`
 
@@ -70,4 +70,5 @@ spl_autoload_register(function ($class) {
   - [ ] Créer les fichiers `Device/Keyboard.php` (clavier), `Device/Mouse.php` (souris), `Device/Speaker.php` (enceintes)
   - [ ] Créer les classes correspondantes et les faire étendre `AbstractDevice`
   - [ ] Instancier des objets dans `index.php` et les ajouter à des ordinateurs des trois types dans `index.php`, grâce à la méthode `setDevices()` de vos objets ordinateurs
+  - [ ] Constater le résultat avec un `var_dump()` pour chacun de vos objets ordinateurs
 
