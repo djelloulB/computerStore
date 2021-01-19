@@ -38,7 +38,7 @@ spl_autoload_register(function ($class) {
 
 ### 1.2. Espaces de nom et rangement
 
-- [ ] Créer un dossier `Computer`
+- [ ] Créer un dossier `Computer` dans le dossier `classes`
 - [ ] Créer une classe `Desktop` (ordinateur fixe de type "tour") dans le fichier `Computer/Desktop.php`
 - [ ] Ajouter le `namespace` de cette classe
 - [ ] Faire en sorte que la classe `Desktop` étende la classe `Computer` (vous aurez également besoin d'appeler la classe `Computer` avec `use Computer`, juste après le namespace)
@@ -71,4 +71,3 @@ spl_autoload_register(function ($class) {
   - [ ] Créer les classes correspondantes et les faire étendre `AbstractDevice`
   - [ ] Instancier des objets dans `index.php` et les ajouter à des ordinateurs des trois types dans `index.php`, grâce à la méthode `setDevices()` de vos objets ordinateurs
   - [ ] Constater le résultat avec un `var_dump()` pour chacun de vos objets ordinateurs
-
