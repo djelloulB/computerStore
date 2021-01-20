@@ -139,3 +139,19 @@ spl_autoload_register(function ($class) {
   - [ ] Faire en sorte d'avoir au moins un ordinateur qui ne soit pas valide
   - [ ] Si ça n'est pas déjà fait, créer un ou des commits dans votre branche, pusher et créer une PR (Pull Request) sur Github. Utiliser votre branche de l'exercice 4 comme base (plutôt que `main`)
   
+## 6. Serialisation
+
+- Nous avons un outil de validation de nos ordinateurs, il va nous falloir d'autres outils dans la vie de ce projet, avant d'utiliser un framework. Un outil qui va nous servir plus tard, la sérialisation : l'art de convertir un objet PHP en un format de communication avec d'autres langages / technologies. Nous allons faire en sorte de convertir nos objets PHP au format JSON (et préparer un peu le terrain pour la partie sur les WebServices ;) ).
+  - [ ] Implémenter l'interface [JsonSerializable](https://www.php.net/manual/fr/class.jsonserializable.php) dans les objets `Computer`, `AbstractComponent` et `AbstractDevice`. 
+    - [ ] En plus d'ajouter le `implements`, il faut également implémenter la méthode `jsonSerialize()` pour décomposer nos objets en tableaux (associatifs).
+  - [ ] Ajouter des propriétés supplémentaires dans les différents composants et périphériques et surcharger la méthode `jsonSerialize()` pour ces objets. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php)
+    - [ ] Ajouter l'attribut `$frequency` (float) à la class `Cpu`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$size` (integer) à la class `Ram`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
+    - [ ] Ajouter l'attribut `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
+    - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes
+  - [ ] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets) (faites un `echo` ou un `var_dump()` du résultat).
+  
