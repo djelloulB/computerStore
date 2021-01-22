@@ -143,7 +143,7 @@ spl_autoload_register(function ($class) {
 
 - Nous avons un outil de validation de nos ordinateurs, il va nous falloir d'autres outils dans la vie de ce projet, avant d'utiliser un framework. Un outil qui va nous servir plus tard, la sérialisation : l'art de convertir un objet PHP en un format de communication avec d'autres langages / technologies. Nous allons faire en sorte de convertir nos objets PHP au format JSON (et préparer un peu le terrain pour la partie sur les WebServices ;) ).
   - Implémenter l'interface [JsonSerializable](https://www.php.net/manual/fr/class.jsonserializable.php) dans les objets `Computer`, `AbstractComponent` et `AbstractDevice`. 
-    - [ ] En plus d'ajouter le `implements`, il faut également implémenter la méthode `jsonSerialize()` pour décomposer nos objets en [tableaux (associatifs)](https://www.php.net/manual/fr/language.types.array.php).
+    - [ ] En plus d'ajouter le `implements`, il faut également ajouter la méthode `jsonSerialize()` (obligatoire pour implémenter l'interface) pour décomposer nos objets en [tableaux (associatifs)](https://www.php.net/manual/fr/language.types.array.php), sur le format `'nomDeLaPropriete' => 'valeurDeLaPropriete'`.
   - Ajouter des propriétés supplémentaires dans les différents composants et périphériques et surcharger la méthode `jsonSerialize()` pour ces objets.
     - [ ] Ajouter l'attribut `$frequency` (float) à la class `Cpu`, avec son getter et son setter
     - [ ] Ajouter l'attribut `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
@@ -155,7 +155,7 @@ spl_autoload_register(function ($class) {
     - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php)
   - [ ] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets et leurs sous-objets) (faites un `echo` ou un `var_dump()` du résultat).
   
-## 7. Compatibilité des composants et périphériques
+## 7. Compatibilité des composants et périphériques (/!\ difficile)
 
 - Pour l'heure, nos composants et nos périphériques peuvent être installés dans n'importe quel ordinateur. Dans les faits, il va falloir enregistrer dans nos composants et nos périphériques avec quel(s) type(s) d'ordinateur ils sont compatibles.
   - [ ] Ajouter une propriété `$compatibility` dans `AbstractComponent` et `AbstractDevice` et ses méthodes. Pour ça, créer un trait (je vous laisse voir le nom ET le rangement :P ).
@@ -165,3 +165,31 @@ spl_autoload_register(function ($class) {
     - [ ] Ajouter plusieurs pièces dans `index.php`, compatibles avec différents types d'ordinateur (mais pas tous ;)). Les ajouter à des ordinateurs.
     - [ ] Faites des cas qui fonctionnent, d'autres non, pour voir votre exception.
   - [ ] Mettre à jour le `ComputerValidator` pour assurer que tous les composants et périphériques sont bien compatibles avec l'ordinateur qui est validé.
+  
+# Révisions
+
+Cette section est dédiée à réviser tout ce qu'on a vu dans les leçons de PHP (procédural, documentation et objet). Nous allons créer / modifier beaucoup de fichiers et faire différents commits. Nous allons faire tout ça dans **une seule** branche `votreNom-revisions` (et, du coup, tout mettre dans une seule Pull Request).
+
+## 1. Html, PHP et tableaux
+
+Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP. 
+
+- [ ] Afficher son contenu dans un tableau (balise `<table>`). Pour cela, utiliser une boucle `foreach`.
+- Le tableau doit avoir 3 colonnes
+  - [ ] Nom des chaussures
+  - [ ] Prix (en euros)
+  - [ ] Nombre en stock
+- [ ] S'il en reste moins de 20 en stock, afficher le texte de **toute** la ligne en rouge
+- Aujourd'hui, il y a une réduction sur toutes les chaussures de plus de 100€ ! 
+  - [ ] Faire une fonction (dans ce même fichier) qui va appliquer un taux de réduction à un prix (ces deux informations vont être passés en paramètres).
+  - [ ] Dans ce cas, afficher les deux prix popur signaler la réduction
+- [ ] Afficher tous les prix avec le format français (ex : 12,45€) grâce à la fonction `number_format()` ([dont la documentation est ici](https://php.net/manual/fr/function.number-format.php))
+- [ ] Ajouter une colonne avec un lien sur chaque nom de chaussure vers la page `2-superglobales.php` et ajouter un paramètre `stock` dans l'url, avec comme valeur, le stock en cours de cette chaussure.
+- [ ] Faire un commit
+
+## 2. Les variables superglobales
+
+Modifier le fichier `2-superglobales.php`.
+
+- [ ] Récupérer la valeur de `stock` contenu dans l'url.
+- [ ] Si elle est vide, rediriger vers la page `1-html.php`
