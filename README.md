@@ -197,6 +197,7 @@ Modifier le fichier `2-superglobales.php`.
 - [ ] Afficher un formulaire, avec 2 champs
   - [ ] Quantité (un nombre entier)
   - [ ] Email (champ de type email)
+- [ ] L'action de ce formulaire **DOIT** contenir le paramètre stock
 - [ ] Vérifier que la quantité entrée est inférieure ou égale au paramètre `stock` de l'url
   - [ ] Si ça n'est pas le cas, afficher un message d'erreur : "Il n'y a pas assez de stock pour répondre à votre demande"
 - [ ] Vérifier que l'email entré est valide en utilisant la fonction `filter_var` ([dont la documentation est ici](https://www.php.net/manual/fr/function.filter-var))
