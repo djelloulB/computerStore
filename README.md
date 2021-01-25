@@ -170,7 +170,7 @@ spl_autoload_register(function ($class) {
 
 Cette section est dédiée à réviser tout ce qu'on a vu dans les leçons de PHP (procédural, documentation et objet). Nous allons créer / modifier beaucoup de fichiers et faire différents commits. Nous allons faire tout ça dans **une seule** branche `votreNom-revisions` (et, du coup, tout mettre dans une seule Pull Request).
 
-## 1. Html, PHP et tableaux (2.5 points)
+## 1. Html, PHP et tableaux
 
 Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP. 
 
@@ -187,7 +187,7 @@ Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP.
 - [ ] Ajouter un lien sur chaque nom de chaussure. Ce lien pointe vers la page `2-superglobales.php` et ajouter un paramètre `stock` dans l'url, avec comme valeur, le stock en cours de cette chaussure.
 - [ ] Faire un commit
 
-## 2. Les variables superglobales (4 points)
+## 2. Les variables superglobales
 
 Modifier le fichier `2-superglobales.php`.
 
