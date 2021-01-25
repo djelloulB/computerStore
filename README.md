@@ -211,8 +211,30 @@ Modifier le fichier `2-superglobales.php`.
   - [ ] prend 2 nombres en paramètres : le diviseur (nombre entier) et le divisé (nombre entier),
   - [ ] renvoie le résultat du calcul : `divisé / diviseur`
   - [ ] renvoie `false` si le paramètre diviseur vaut 0
-- [ ] Créer une fonction `factorielle` qui calcule la factorielle jusqu'au paramètre donné
+- [ ] Créer une fonction `factorielle` (voir [l'article Wikipedia pour le calcul](https://fr.wikipedia.org/wiki/Factorielle)) qui calcule la factorielle jusqu'au paramètre donné
   - [ ] prend le paramètre `number` (nombre entier)
-  - [ ] renvoie le résultat du calcul de la factorielle (si number vaut 0, renvoyer 1) (voir [l'article Wikipedia pour le calcul](https://fr.wikipedia.org/wiki/Factorielle))
+  - [ ] renvoie le résultat du calcul de la factorielle (si number vaut 0, renvoyer 1)
   - [ ] indice : vous n'êtes pas obligés d'utiliser une méthode récursive ;) 
 - [ ] Faire un commit
+
+## 4. Débugguer l'existant
+
+Dans tous ces extraits de code se cachent plusieurs fautes, erreurs ou mauvaises pratiques.
+
+```php
+    $variable = $_GET['variable'];
+    if(isset($variable)) {
+        echo '$variable'
+    } else {
+        echo $_GET['varaible'];
+    }
+```
+
+```php
+    function UneFonction (int $parametre): int
+    {
+        return $this->parametre * 2;
+    }
+
+    echo UneFonction($parametre = 2);
+```
