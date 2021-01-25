@@ -170,7 +170,7 @@ spl_autoload_register(function ($class) {
 
 Cette section est dédiée à réviser tout ce qu'on a vu dans les leçons de PHP (procédural, documentation et objet). Nous allons créer / modifier beaucoup de fichiers et faire différents commits. Nous allons faire tout ça dans **une seule** branche `votreNom-revisions` (et, du coup, tout mettre dans une seule Pull Request).
 
-## 1. Html, PHP et tableaux
+## 1. Html, PHP et tableaux (2.5 points)
 
 Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP. 
 
@@ -180,14 +180,14 @@ Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP.
   - [ ] Prix (en euros)
   - [ ] Nombre en stock
 - [ ] S'il en reste moins de 20 en stock, afficher le texte de **toute** la ligne en rouge
-- Aujourd'hui, il y a une réduction sur toutes les chaussures de plus de 100€ ! 
+- Aujourd'hui, il y a une réduction de 10% sur toutes les chaussures de plus de 100€ ! 
   - [ ] Faire une fonction (dans ce même fichier) qui va appliquer un taux de réduction à un prix (ces deux informations vont être passés en paramètres).
   - [ ] Dans ce cas, afficher les deux prix pour signaler la réduction
 - [ ] Afficher tous les prix avec le format français (ex : 12,45€) grâce à la fonction `number_format()` ([dont la documentation est ici](https://php.net/manual/fr/function.number-format.php))
-- [ ] Ajouter une colonne avec un lien sur chaque nom de chaussure vers la page `2-superglobales.php` et ajouter un paramètre `stock` dans l'url, avec comme valeur, le stock en cours de cette chaussure.
+- [ ] Ajouter un lien sur chaque nom de chaussure. Ce lien pointe vers la page `2-superglobales.php` et ajouter un paramètre `stock` dans l'url, avec comme valeur, le stock en cours de cette chaussure.
 - [ ] Faire un commit
 
-## 2. Les variables superglobales
+## 2. Les variables superglobales (4 points)
 
 Modifier le fichier `2-superglobales.php`.
 
@@ -202,4 +202,16 @@ Modifier le fichier `2-superglobales.php`.
 - [ ] Vérifier que l'email entré est valide en utilisant la fonction `filter_var` ([dont la documentation est ici](https://www.php.net/manual/fr/function.filter-var))
   - [ ] Si ça n'est pas le cas, afficher un message d'erreur : "Veuillez entrer un email valide"
 - [ ] Si les deux champs sont valides, ajouter leurs valeurs dans la session (`quantity` et `email`)
+- [ ] Faire un commit
 
+## 3. Concevoir des fonctions
+
+- [ ] Créer une fonction `division` qui :
+  - [ ] prend 2 nombres en paramètres : le diviseur (nombre entier) et le divisé (nombre entier),
+  - [ ] renvoie le résultat du calcul : `divisé / diviseur`
+  - [ ] renvoie `false` si le paramètre diviseur vaut 0
+- [ ] Créer une fonction `factorielle` qui calcule la factorielle jusqu'au paramètre donné
+  - [ ] prend le paramètre `number` (nombre entier)
+  - [ ] renvoie le résultat du calcul de la factorielle (si number vaut 0, renvoyer 1) (voir [l'article Wikipedia pour le calcul](https://fr.wikipedia.org/wiki/Factorielle))
+  - [ ] indice : vous n'êtes pas obligés d'utiliser une méthode récursive ;) 
+- [ ] Faire un commit
