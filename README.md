@@ -215,26 +215,42 @@ Modifier le fichier `2-superglobales.php`.
   - [ ] prend le paramètre `number` (nombre entier)
   - [ ] renvoie le résultat du calcul de la factorielle (si number vaut 0, renvoyer 1)
   - [ ] indice : vous n'êtes pas obligés d'utiliser une méthode récursive ;) 
+- [ ] faire des appels dans le fichier `3-fonctions.php` pour vérifier les résultats et les afficher (utiliser la fonction `var_dump()` pour afficher les résultats plus clairement)
 - [ ] Faire un commit
 
-## 4. Débugguer l'existant
+## 4. Lire du code existant
 
-Dans tous ces extraits de code se cachent plusieurs fautes, erreurs ou mauvaises pratiques.
+Ne pas exécuter le fichier `4-debug.php` dans Wamp ou Mamp. Ils risquent de faire planter votre machine.
 
-```php
-    $variable = $_GET['variable'];
-    if(isset($variable)) {
-        echo '$variable'
-    } else {
-        echo $_GET['varaible'];
-    }
-```
+- [ ] Dans la première partie du fichier `4-debug.php` se cachent plusieurs fautes, erreurs ou mauvaises pratiques. Les corriger dans le fichier `4-debug.php`.
+- Dans la deuxième partie du fichier, donner les résultats des appels des fonctions :
+  - [ ] remplacer les commentaires `Votre réponse ici` par votre réponse
+  - [ ] s'ils renvoient une erreur, marquer "une erreur" et expliquer pourquoi avec vos mots
+- [ ] Faire un commit
 
-```php
-    function UneFonction (int $parametre): int
-    {
-        return $this->parametre * 2;
-    }
 
-    echo UneFonction($parametre = 2);
-```
+## 5. Objets
+
+- Écrire une classe abstraite `AbstractBook` (créer le fichier dans le dossier `classes`) ayant ces propriétés (avec la visibilité `protected`)
+  - [ ] `countPages` un entier
+  - [ ] `isbn` une chaine de caractère
+  - [ ] `title` une chaine de caractère
+- [ ] En commentaire de la classe, expliquer avec vos mots ce qu'est une classe abstraite
+- [ ] Écrire les getters et les setters de ces propriétés
+- [ ] Ajouter des annotations (commentaires) aux propriétés et aux méthodes
+- [ ] Créer 2 classes héritant de `AbstractBook`: `ComicBook` et `Book`
+- Dans `Book` :
+  - [ ] Surcharger le constructeur du parent pour que `countPages` soit égal à `200` par défaut
+- Dans `ComicBook` :
+  - [ ] Surcharger le constructeur du parent pour que `countPages` soit égal à `152` par défaut
+- Appeler ces deux classes dans `5-objets.php` et créer 2 instances de ces objets (une de `ComicBook` et une de `Book`) avec les valeurs suivantes :
+  - Pour le `ComicBook` : 
+    - [ ] `countPages` : 152
+    - [ ] `isbn` : 9791026817710
+    - [ ] `title` : `La chute de Tír na Nóg`
+  - Pour le `Book` : 
+    - [ ] `countPages` : 464
+    - [ ] `isbn` : 9782940426379
+    - [ ] `title` : `Caliban et la sorcière`
+- [ ] Afficher le contenu des objets (avec un `echo`) sous la forme `TitreDuLivre (Isbn) : countPages pages`
+- [ ] Faire un commit
