@@ -192,4 +192,5 @@ Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP.
 Modifier le fichier `2-superglobales.php`.
 
 - [ ] Récupérer la valeur de `stock` contenu dans l'url.
-- [ ] Si elle est vide, rediriger vers la page `1-html.php`
+- [ ] Si elle est vide, rediriger vers la page `1-html.php` (fonction `header()`)
+- [ ] Sinon, la mettre dans une variable `stock` en session.
