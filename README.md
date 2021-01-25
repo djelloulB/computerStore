@@ -182,7 +182,7 @@ Modifier le fichier `1-html.php`. ce fichier contient un tableau PHP.
 - [ ] S'il en reste moins de 20 en stock, afficher le texte de **toute** la ligne en rouge
 - Aujourd'hui, il y a une réduction sur toutes les chaussures de plus de 100€ ! 
   - [ ] Faire une fonction (dans ce même fichier) qui va appliquer un taux de réduction à un prix (ces deux informations vont être passés en paramètres).
-  - [ ] Dans ce cas, afficher les deux prix popur signaler la réduction
+  - [ ] Dans ce cas, afficher les deux prix pour signaler la réduction
 - [ ] Afficher tous les prix avec le format français (ex : 12,45€) grâce à la fonction `number_format()` ([dont la documentation est ici](https://php.net/manual/fr/function.number-format.php))
 - [ ] Ajouter une colonne avec un lien sur chaque nom de chaussure vers la page `2-superglobales.php` et ajouter un paramètre `stock` dans l'url, avec comme valeur, le stock en cours de cette chaussure.
 - [ ] Faire un commit
@@ -194,3 +194,12 @@ Modifier le fichier `2-superglobales.php`.
 - [ ] Récupérer la valeur de `stock` contenu dans l'url.
 - [ ] Si elle est vide, rediriger vers la page `1-html.php` (fonction `header()`)
 - [ ] Sinon, la mettre dans une variable `stock` en session.
+- [ ] Afficher un formulaire, avec 2 champs
+  - [ ] Quantité (un nombre entier)
+  - [ ] Email (champ de type email)
+- [ ] Vérifier que la quantité entrée est inférieure ou égale au paramètre `stock` de l'url
+  - [ ] Si ça n'est pas le cas, afficher un message d'erreur : "Il n'y a pas assez de stock pour répondre à votre demande"
+- [ ] Vérifier que l'email entré est valide en utilisant la fonction `filter_var` ([dont la documentation est ici](https://www.php.net/manual/fr/function.filter-var))
+  - [ ] Si ça n'est pas le cas, afficher un message d'erreur : "Veuillez entrer un email valide"
+- [ ] Si les deux champs sont valides, ajouter leurs valeurs dans la session (`quantity` et `email`)
+
