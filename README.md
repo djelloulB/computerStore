@@ -10,7 +10,7 @@ Je vous conseille de créer une branche pour chaque exercice (une branche pour l
 ```php
 spl_autoload_register(function ($class) {
     // Dé-commenter la ligne ci-dessous si vous utilisez un Mac avec MAMP 
-    // $class = str_replace($class, '\\', '/');
+    // $class = str_replace('\\', '/', $class);
     require_once "classes/$class.php";
 });
 ```
@@ -145,15 +145,20 @@ spl_autoload_register(function ($class) {
   - Implémenter l'interface [JsonSerializable](https://www.php.net/manual/fr/class.jsonserializable.php) dans les objets `Computer`, `AbstractComponent` et `AbstractDevice`. 
     - [ ] En plus d'ajouter le `implements`, il faut également ajouter la méthode `jsonSerialize()` (obligatoire pour implémenter l'interface) pour décomposer nos objets en [tableaux (associatifs)](https://www.php.net/manual/fr/language.types.array.php), sur le format `'nomDeLaPropriete' => 'valeurDeLaPropriete'`.
   - Ajouter des propriétés supplémentaires dans les différents composants et périphériques et surcharger la méthode `jsonSerialize()` pour ces objets.
-    - [ ] Ajouter l'attribut `$frequency` (float) à la class `Cpu`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$size` (integer) à la class `Ram`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
-    - [ ] Ajouter l'attribut `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
+    - [ ] Ajouter dans la sérialisation (et uniquement ici) le type du composant, du périphérique ou de l'ordinateur (le récupérer avec `self::class` et m'expliquer cette syntaxe dans un commentaire ;). Voir [la documentation ici](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php))
+    - [ ] Ajouter la propriété `$frequency` (float) à la class `Cpu`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$size` (integer) à la class `Ram`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
+    - [ ] Ajouter la propriété `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
     - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php)
   - [ ] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets et leurs sous-objets) (faites un `echo` ou un `var_dump()` du résultat).
+  
+### 6.1. Renvoyer des données sérialisées
+
+- Nous voulons maintenant retourner
   
 ## 7. Compatibilité des composants et périphériques (/!\ difficile)
 
