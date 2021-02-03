@@ -161,7 +161,7 @@ spl_autoload_register(function ($class) {
 - Nous voulons maintenant retourner des données au format json et faire en sorte que les headers soient correctement définis (que le navigateur comprenne qu'il est face à du JSON). Nous allons utiliser un paramètre dans notre url, quand nous voulons récupérer des informations d'API. 
   - [ ] Dans `index.php`, récupérer un éventuel paramètre `api`
     - [ ] S'il est défini, nous voulons prévenir le navigateur que nous allons lui envoyer des données en JSON (grâce à la fonction `header()` de PHP)
-    - [ ] S'il est défini, envoyer un objet de type `Computer`, sérialisé avec la fonction `json_encode`
+    - [ ] S'il est défini, envoyer un objet de type `Computer`, sérialisé avec la fonction `json_encode` (attention, on ne veut que cette donnée dans l'affichage, il ne doit pas y avoir de `var_dump` ou de `echo` ni avant ni après)
   - [ ] Appeler votre page index.php avec le paramètre `index.php?api=1` et vérifier le rendu
   
 ## 7. Compatibilité des composants et périphériques (/!\ difficile)
