@@ -142,11 +142,12 @@ spl_autoload_register(function ($class) {
 ## 6. Serialisation
 
 - Nous avons un outil de validation de nos ordinateurs, il va nous falloir d'autres outils dans la vie de ce projet, avant d'utiliser un framework. Un outil qui va nous servir plus tard, la sérialisation : l'art de convertir un objet PHP en un format de communication avec d'autres langages / technologies. Nous allons faire en sorte de convertir nos objets PHP au format JSON (et préparer un peu le terrain pour la partie sur les WebServices ;) ).
+  
   - [ ] Voir si la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (normalement, les objets vont renvoient du vide). Pour corriger ce rendu, nous allons expliquer à PHP comment passer d'un objet à un tableau, plus facile à convertir en JSON.
   - Implémenter l'interface [JsonSerializable](https://www.php.net/manual/fr/class.jsonserializable.php) dans les objets `Computer`, `AbstractComponent` et `AbstractDevice`. 
     - [ ] En plus d'ajouter le `implements`, il faut également ajouter la méthode `jsonSerialize()` (obligatoire pour implémenter l'interface) qui va retourner un [tableau (associatif)](https://www.php.net/manual/fr/language.types.array.php), avec toutes les propriétés de l'objet (sur le format `'nomDeLaPropriete' => 'valeurDeLaPropriete'`).
+    
   - Ajouter des propriétés supplémentaires dans les différents composants et périphériques et surcharger la méthode `jsonSerialize()` pour ces objets.
-    - [ ] Ajouter dans la sérialisation (et uniquement ici) le type du composant, du périphérique ou de l'ordinateur (le récupérer avec `self::class` et m'expliquer cette syntaxe dans un commentaire ;). Voir [la documentation ici](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php))
     - [ ] Ajouter la propriété `$frequency` (float) à la class `Cpu`, avec son getter et son setter
     - [ ] Ajouter la propriété `$rtx` (boolean) à la class `GraphicCard`, avec son getter et son setter
     - [ ] Ajouter la propriété `$chipset` (string|null) à la class `MotherBoard`, avec son getter et son setter
@@ -154,7 +155,8 @@ spl_autoload_register(function ($class) {
     - [ ] Ajouter la propriété `$format` (string) (ex: `AZERTY`) à la class `Keyboard`, avec son getter et son setter
     - [ ] Ajouter la propriété `$leftHanded` (boolean) à la class `Mouse`, avec son getter et son setter
     - [ ] Ajouter la propriété `$countSpeakers` (float) à la class `Speaker`, avec son getter et son setter
-    - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php)
+    - [ ] Mettre à jour les méthodes `jsonSerialize()` de ces classes. [Un exemple de méthode surchargée est présente dans les slides](http://formation-hb.drakolab.fr/php/3-objet.html#14) ou [l'exemple 3 de cette documentation](https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php#example-238))
+    - [ ] Ajouter dans la sérialisation des objets que vous venez de modifier (et uniquement ici) le type du composant, du périphérique ou de l'ordinateur (le récupérer avec `self::class` et m'expliquer cette syntaxe dans un commentaire ;).
   - [ ] Tester que la sérialisation fonctionne en utilisant la fonction `json_encode()` sur vos objets `Computer` (vous devez avoir toutes les informations de vos objets et leurs sous-objets) (faites un `echo` ou un `var_dump()` du résultat).
 
 ### 6.1. Renvoyer des données sérialisées
