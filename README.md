@@ -186,7 +186,7 @@ spl_autoload_register(function ($class) {
 
 - [ ] Faire un schéma de la base de données à partir des objets que nous avons (conseil : faites une seule table pour `Computer` et ses enfants, et idem pour les différents composants et périphériques)
   - [ ] Comment faites-vous le lien entre les tables de l'objet Computer et des périphériques / composants ?
-  - [ ] Discuter de votre modèle de données (vos tables et leurs liens) avec d'autres
+  - [ ] Discuter de votre modèle de données (vos tables et leurs liens) avec d'autres (il y a plusieurs possibilités et manières de faire ici)
 - [ ] Dans PhpMyAdmin, créer cette base de données `computer_exercice` et ses tables
 - [ ] Exporter cette base de données et ajouter le fichier `.sql` dans ce projet
 
