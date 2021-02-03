@@ -164,10 +164,10 @@ spl_autoload_register(function ($class) {
 ### 6.1. Renvoyer des données sérialisées
 
 - Nous voulons maintenant retourner des données au format json et faire en sorte que les headers soient correctement définis (que le navigateur comprenne qu'il est face à du JSON). Nous allons utiliser un paramètre dans notre url, quand nous voulons récupérer des informations d'API. 
-  - [ ] Dans `index.php`, récupérer un éventuel paramètre `api`
+  - [ ] Dans `index.php`, récupérer un éventuel paramètre `api` dans l'url (que nous utiliserons par la suite)
     - [ ] S'il est défini, nous voulons prévenir le navigateur que nous allons lui envoyer des données en JSON (grâce à la fonction `header()` de PHP)
     - [ ] S'il est défini, afficher (avec un `echo`) un objet de type `Computer`, sérialisé avec la fonction `json_encode` (attention, on ne veut que cette donnée dans l'affichage, il ne doit pas y avoir d'autres `var_dump` ou d'autres `echo`)
-  - [ ] Appeler votre page index.php avec le paramètre `index.php?api=1` et vérifier le rendu
+  - [ ] Appeler votre page index.php avec le paramètre `index.php?api` et vérifier le rendu
   
 ## 7. Compatibilité des composants et périphériques (/!\ difficile)
 
