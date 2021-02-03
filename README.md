@@ -216,12 +216,12 @@ spl_autoload_register(function ($class) {
   
 ## 8.5. Créer des liens
 
-- [ ] Créer les fichiers `link-device-and-computer.php` qui va
+- [ ] Créer le fichier `link-device-and-computer.php` qui va
   - [ ] Inclure la connexion à la BdD,
   - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos périphériques,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
 
-- [ ] Créer les fichiers `link-device-and-computer.php`, `link-component-and-computer.php` qui vont
+- [ ] Créer le fichier `link-component-and-computer.php` qui va
   - [ ] Inclure la connexion à la BdD,
   - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos composants,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
