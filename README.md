@@ -158,7 +158,7 @@ spl_autoload_register(function ($class) {
   
 ### 6.1. Renvoyer des données sérialisées
 
-- Nous voulons maintenant retourner des données au format json et faire en sorte que les headers soient correctement définis (que le navigateur comprenne qu'il est fasse à du JSON). Nous allons utiliser un paramètre dans notre url, quand nous voulons récupérer des informations d'API. 
+- Nous voulons maintenant retourner des données au format json et faire en sorte que les headers soient correctement définis (que le navigateur comprenne qu'il est face à du JSON). Nous allons utiliser un paramètre dans notre url, quand nous voulons récupérer des informations d'API. 
   - [ ] Dans `index.php`, récupérer un éventuel paramètre `api`
     - [ ] S'il est défini, nous voulons prévenir le navigateur que nous allons lui envoyer des données en JSON (grâce à la fonction `header()` de PHP)
     - [ ] S'il est défini, envoyer un objet de type `Computer`, sérialisé avec la fonction `json_encode`
@@ -174,6 +174,24 @@ spl_autoload_register(function ($class) {
     - [ ] Ajouter plusieurs pièces dans `index.php`, compatibles avec différents types d'ordinateur (mais pas tous ;)). Les ajouter à des ordinateurs.
     - [ ] Faites des cas qui fonctionnent, d'autres non, pour voir votre exception.
   - [ ] Mettre à jour le `ComputerValidator` pour assurer que tous les composants et périphériques sont bien compatibles avec l'ordinateur qui est validé.
+  
+## 8. Base de données
+
+## 8.1. Créer les tables et les données
+
+- [ ] Faire un schéma de la base de données à partir des objets que nous avons (conseil : faites une seule table pour `Computer` et ses enfants, et idem pour les différents composants et périphériques)
+  - [ ] Comment faites-vous le lien entre les tables de l'objet Computer et des périphériques / composants ?
+  - [ ] Discuter de votre modèle de données (vos tables et leurs liens) avec d'autres
+- [ ] Dans PhpMyAdmin, créer cette base de données `computer_exercice` et ses tables
+- [ ] Exporter cette base de données et ajouter le fichier `.sql` dans ce projet
+
+## 8.2. Insérer des données 
+
+- [ ] Créer un fichier `includes/connect.php` et utiliser PDO pour vous connecter à la BdD
+- [ ] Créer un fichier `insert-computer.php` qui va
+  - [ ] Inclure la connexion à la BdD,
+  - [ ] Remplir la table liée à votre objet `Computer` en y ajoutant des données,
+  - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
   
 # Révisions
 
