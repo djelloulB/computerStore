@@ -196,6 +196,36 @@ spl_autoload_register(function ($class) {
   - [ ] Remplir la table liée à votre objet `Computer` en y ajoutant des données,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
   
+## 8.3. Récupérer des données
+
+- [ ] Créer un fichier `select-computer.php` qui va
+  - [ ] Inclure la connexion à la BdD,
+  - [ ] Récupérer les données depuis la base de données,
+    - Une fois les données récupérées, les utiliser dans des instances d'objets `Computer`
+      - [ ] Instancier des variables en fonction du type contenu dans la BdD
+      - [ ] Leur ajouter les données venues de la base (grâce aux setters)
+  - [ ] Afficher les données de la base
+    - [ ] Créer un tableau HTML (`<table>`) pour afficher tous les champs de la table `computer`
+
+## 8.4. Insérer des données dans les autres tables 
+
+- [ ] Créer les fichiers `insert-device.php`, `insert-component.php` qui vont
+  - [ ] Inclure la connexion à la BdD,
+  - [ ] Remplir les tables liées à vos objets `Device` et `Component` en y ajoutant des données,
+  - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
+  
+## 8.5. Créer des liens
+
+- [ ] Créer les fichiers `link-device-and-computer.php` qui va
+  - [ ] Inclure la connexion à la BdD,
+  - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos périphériques,
+  - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
+
+- [ ] Créer les fichiers `link-device-and-computer.php`, `link-component-and-computer.php` qui vont
+  - [ ] Inclure la connexion à la BdD,
+  - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos composants,
+  - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
+
 # Révisions
 
 Cette section est dédiée à réviser tout ce qu'on a vu dans les leçons de PHP (procédural, documentation et objet). Nous allons créer / modifier beaucoup de fichiers et faire différents commits. Nous allons faire tout ça dans **une seule** branche `votreNom-revisions` (et, du coup, tout mettre dans une seule Pull Request).
