@@ -210,6 +210,12 @@ Nous avons une base de composants et de périphériques en réserve et ils ne so
     - Une fois les données récupérées, les utiliser dans des instances d'objets `Computer`
       - [ ] Instancier des variables en fonction du type contenu dans la BdD
       - [ ] Leur ajouter les données venues de la base (grâce aux setters)
+      - Un exemple
+```php
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $computer = new Desktop(); // Ici, on crée une instance de Desktop, mais pour les autres types, il va falloir utiliser un champ de la base de données.
+    $computer->setName($result['name']);
+```
   - [ ] Afficher les données de la base
     - [ ] Créer un tableau HTML (`<table>`) pour afficher tous les champs de la table `computer`
 
