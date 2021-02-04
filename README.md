@@ -182,6 +182,10 @@ spl_autoload_register(function ($class) {
   
 ## 8. Base de données
 
+Nous sommes une société de vente d'ordinateurs pré-montés.
+Nous fabriquons des ordinateurs à partir de différents composants et les vendons à nos clients (particuliers comme professionnels) via un autre site. Nous avons besoin d'un outil de conception de ces ordinateurs, afin que notre équipe de techniciens puissent savoir quels pièces monter dans quel modèle d'ordinateur et quels périphériques sont vendus avec.
+
+
 ## 8.1. Créer les tables et les données
 
 - [ ] Faire un schéma de la base de données à partir des objets que nous avons (conseil : faites une seule table pour `Computer` et ses enfants, et idem pour les différents composants et périphériques)
