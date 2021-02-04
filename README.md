@@ -184,7 +184,7 @@ spl_autoload_register(function ($class) {
 
 Nous sommes une société de vente d'ordinateurs pré-montés.
 Nous fabriquons des ordinateurs à partir de différents composants et les vendons à nos clients (particuliers comme professionnels) via un autre site. Nous avons besoin d'un outil de conception de ces ordinateurs, afin que notre équipe de techniciens puissent savoir quels pièces monter dans quel modèle d'ordinateur et quels périphériques sont vendus avec.
-
+Nous avons une base de composants et de périphériques en réserve et ils ne sont pas forcément associés à des ordinateurs (pour le moment, c'est à nos techniciens de décider).
 
 ## 8.1. Créer les tables et les données
 
