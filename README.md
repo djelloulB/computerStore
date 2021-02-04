@@ -188,7 +188,7 @@ Nous avons une base de composants et de périphériques en réserve et ils ne so
 
 ## 8.1. Créer les tables et les données
 
-- [ ] Faire un schéma de la base de données à partir des objets que nous avons (conseil : faites une seule table pour `Computer` et ses enfants, et idem pour les différents composants et périphériques)
+- [ ] Faire un schéma de la base de données à partir des objets que nous avons
   - [ ] Comment faites-vous le lien entre les tables de l'objet Computer et des périphériques / composants ?
   - [ ] Discuter de votre modèle de données (vos tables et leurs liens) avec d'autres (il y a plusieurs possibilités et manières de faire ici)
 - [ ] Dans PhpMyAdmin, créer cette base de données `computer_exercice` et ses tables
