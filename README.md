@@ -196,6 +196,19 @@ if (!isDone) {
 }
 ```
 
+Utilisation de [lastInsertId](https://www.php.net/manual/fr/pdo.lastinsertid.php) :
+
+```php
+$stmt = $connection->prepare("INSERT INTO truc (bidule, machin) VALUES(:bidule, :machin)");
+$isDone = $stmt->execute();
+if (!$isDone) {
+  throw new Exception('Erreur lors de la requête : '.$statement->errorInfo()[2]);
+}
+
+$id = $connection->lastInsertId();
+```
+
+
 ## 8.1. Créer les tables et les données
 
 - [ ] Faire un schéma de la base de données à partir des objets que nous avons
