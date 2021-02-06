@@ -347,6 +347,7 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
     - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
     - [ ] La méthode (attribut `method`) sera réglée sur `POST`
     - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$device` (le champ `name` aura la valeur de `$device->getName()`, par exemple)
+    - [ ] Si vous avez choisi des tables héritées avec la méthode Merise, il vous faudra ajouter des conditions autour des champs des objets enfants (`if ($device->getType == Keyboard::class)` ou `if ($device instanceof Keyboard)` par exemple), afin d'éviter les erreurs fatales
   
   - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
     - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$device` pour le mettre à jour avec les valeurs du formulaire
@@ -358,6 +359,8 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
   - [ ] Vérifier le fonctionnement du script
 
 ## 9.2. CRUD de l'objet composant
+
+Tout cet exercice reprend mot pour mot l'exercice 9.1. Il s'agit de répéter les mêmes opérations, mais de les adapter à vos composants.
 
 Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
   - [ ] Ajouter la variable `$root` avec la bonne valeur 
@@ -415,6 +418,7 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
     - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
     - [ ] La méthode (attribut `method`) sera réglée sur `POST`
     - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$component` (le champ `name` aura la valeur de `$component->getName()`, par exemple)
+    - [ ] Si vous avez choisi des tables héritées avec la méthode Merise, il vous faudra ajouter des conditions autour des champs des objets enfants (`if ($component->getType == Cpu::class)` ou `if ($component instanceof Cpu)` par exemple), afin d'éviter les erreurs fatales
   
   - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
     - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$component` pour le mettre à jour avec les valeurs du formulaire
@@ -426,6 +430,8 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
   - [ ] Vérifier le fonctionnement du script
 
 ## 9.3. CRUD de l'objet ordinateur
+
+Tout cet exercice reprend mot pour mot l'exercice 9.1. Il s'agit de répéter les mêmes opérations, mais de les adapter à vos ordinateurs.
 
 Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
   - [ ] Ajouter la variable `$root` avec la bonne valeur 
@@ -483,6 +489,7 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
     - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
     - [ ] La méthode (attribut `method`) sera réglée sur `POST`
     - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$computer` (le champ `name` aura la valeur de `$computer->getName()`, par exemple)
+    - [ ] Si vous avez choisi des tables héritées avec la méthode Merise (avec des champs spéciaux pour chaque type), il vous faudra ajouter des conditions autour des champs des objets enfants (`if ($computer->getType == Desktop::class)` ou `if ($computer instanceof Desktop)` par exemple), afin d'éviter les erreurs fatales
   
   - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
     - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$computer` pour le mettre à jour avec les valeurs du formulaire
