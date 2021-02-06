@@ -186,7 +186,7 @@ Nous sommes une société de vente d'ordinateurs pré-montés.
 Nous fabriquons des ordinateurs à partir de différents composants et les vendons à nos clients (particuliers comme professionnels) via un autre site. Nous avons besoin d'un outil de conception de ces ordinateurs, afin que notre équipe de techniciens puissent savoir quels pièces monter dans quel modèle d'ordinateur et quels périphériques sont vendus avec.
 Nous avons une base de composants et de périphériques en réserve et ils ne sont pas forcément associés à des ordinateurs (pour le moment, c'est à nos techniciens de décider).
 
-## 8.0. Astuces et outils utiles
+### 8.0. Astuces et outils utiles
 
 Pour gérer vos erreurs avec PDO, vous pouvez utiliser [cette méthode de PDOStatement](https://www.php.net/manual/fr/pdostatement.errorinfo.php) :
 
@@ -209,7 +209,7 @@ $id = $connection->lastInsertId();
 ```
 
 
-## 8.1. Créer les tables et les données
+### 8.1. Créer les tables et les données
 
 - [ ] Faire un schéma de la base de données à partir des objets que nous avons
   - [ ] Comment faites-vous le lien entre les tables de l'objet Computer et des périphériques / composants ?
@@ -217,7 +217,7 @@ $id = $connection->lastInsertId();
 - [ ] Dans PhpMyAdmin, créer cette base de données `computer_exercice` et ses tables
 - [ ] Exporter cette base de données et ajouter le fichier `.sql` dans ce projet
 
-## 8.2. Insérer des données 
+### 8.2. Insérer des données 
 
 - [ ] Créer un fichier `includes/connect.php` et utiliser PDO pour vous connecter à la BdD
 - [ ] Créer un fichier `insert-computer.php` qui va
@@ -225,7 +225,7 @@ $id = $connection->lastInsertId();
   - [ ] Remplir la table liée à votre objet `Computer` en y ajoutant des données,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
   
-## 8.3. Récupérer des données
+### 8.3. Récupérer des données
 
 - [ ] Créer un fichier `select-computer.php` qui va
   - [ ] Inclure la connexion à la BdD,
@@ -242,14 +242,14 @@ $id = $connection->lastInsertId();
   - [ ] Afficher les données de la base
     - [ ] Créer un tableau HTML (`<table>`) pour afficher tous les champs de la table `computer`
 
-## 8.4. Insérer des données dans les autres tables 
+### 8.4. Insérer des données dans les autres tables 
 
 - [ ] Créer les fichiers `insert-device.php`, `insert-component.php` qui vont
   - [ ] Inclure la connexion à la BdD,
   - [ ] Remplir les tables liées à vos objets `Device` et `Component` en y ajoutant des données,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
   
-## 8.5. Créer des liens
+### 8.5. Créer des liens
 
 - [ ] Créer le fichier `link-device-and-computer.php` qui va
   - [ ] Inclure la connexion à la BdD,
@@ -261,7 +261,7 @@ $id = $connection->lastInsertId();
   - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos composants,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
 
-## 9. Formulaire de création / modification
+## 9. Crud
 
 Dans cet exercice bien plus long et complet, nous allons permettre à un utilisateur de créer des composants, des périphériques et des ordinateurs, via des formulaires dédiés.
 Dans un premier temps, nous allons créer un CRUD (Create, Read, Update, Delete) pour les périphériques, puis pour les composants. Enfin, nous passerons au plus complexe : l'ordinateur.
@@ -289,14 +289,14 @@ $root = '..'; // Ajouter autant de ../ que nécessaire pour revenir au dossier r
 include '../autoload.php'; // On peut ensuite appeler notre autoload, qui aura le bon chemin pour charger nos classes
 ```
 
-## 9.1. CRUD de l'objet périphérique
+### 9.1. CRUD de l'objet périphérique
 
 Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
   - [ ] Ajouter la variable `$root` avec la bonne valeur 
   - [ ] Faire un `include` de l'autoload
   - [ ] Inclure la connexion à la base de donnée
 
-### 9.1.1. Liste des périphériques
+#### 9.1.1. Liste des périphériques
 
 Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table de périphériques. 
 
@@ -304,7 +304,7 @@ Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Don
   - [ ] Faire une requête de récupération des périphériques (les trier par ordre alphabétique, par exemple)
   - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
   
-### 9.1.2. Suppression d'un périphérique
+#### 9.1.2. Suppression d'un périphérique
 
 Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
 
@@ -323,7 +323,7 @@ Ici, nous allons gérer la suppression d'une entrée dans la base, via notre sit
     
   - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
 
-### 9.1.3. Ajout / modification d'un périphérique  
+#### 9.1.3. Ajout / modification d'un périphérique  
 
 Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types de périphériques.
 
@@ -358,7 +358,7 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
     
   - [ ] Vérifier le fonctionnement du script
 
-## 9.2. CRUD de l'objet composant
+### 9.2. CRUD de l'objet composant
 
 Tout cet exercice reprend mot pour mot l'exercice 9.1. Il s'agit de répéter les mêmes opérations, mais de les adapter à vos composants.
 
@@ -367,7 +367,7 @@ Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier,
   - [ ] Faire un `include` de l'autoload
   - [ ] Inclure la connexion à la base de donnée
 
-### 9.2.1. Liste des composants
+#### 9.2.1. Liste des composants
 
 Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table de composants. 
 
@@ -375,7 +375,7 @@ Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Don
   - [ ] Faire une requête de récupération des composants (les trier par ordre alphabétique, par exemple)
   - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
   
-### 9.2.2. Suppression d'un composant
+#### 9.2.2. Suppression d'un composant
 
 Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
 
@@ -394,7 +394,7 @@ Ici, nous allons gérer la suppression d'une entrée dans la base, via notre sit
     
   - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
 
-### 9.2.3. Ajout / modification d'un composant  
+#### 9.2.3. Ajout / modification d'un composant  
 
 Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types de composants.
 
@@ -429,7 +429,7 @@ Maintenant que nous pouvons supprimer des informations, voyons comment en ajoute
     
   - [ ] Vérifier le fonctionnement du script
 
-## 9.3. CRUD de l'objet ordinateur
+### 9.3. CRUD de l'objet ordinateur
 
 Tout cet exercice reprend mot pour mot l'exercice 9.1. Il s'agit de répéter les mêmes opérations, mais de les adapter à vos ordinateurs.
 
@@ -438,7 +438,7 @@ Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier,
   - [ ] Faire un `include` de l'autoload
   - [ ] Inclure la connexion à la base de donnée
 
-### 9.3.1. Liste des ordinateurs
+#### 9.3.1. Liste des ordinateurs
 
 Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table d'ordinateurs. 
 
@@ -446,7 +446,7 @@ Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Don
   - [ ] Faire une requête de récupération des ordinateurs (les trier par ordre alphabétique, par exemple)
   - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
   
-### 9.3.2. Suppression d'un ordinateur
+#### 9.3.2. Suppression d'un ordinateur
 
 Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
 
@@ -465,7 +465,7 @@ Ici, nous allons gérer la suppression d'une entrée dans la base, via notre sit
     
   - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
 
-### 9.3.3. Ajout / modification d'un ordinateur  
+#### 9.3.3. Ajout / modification d'un ordinateur  
 
 Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types d'ordinateurs.
 
