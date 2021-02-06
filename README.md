@@ -191,7 +191,7 @@ Nous avons une base de composants et de périphériques en réserve et ils ne so
 Pour gérer vos erreurs avec PDO, vous pouvez utiliser [cette méthode de PDOStatement](https://www.php.net/manual/fr/pdostatement.errorinfo.php) :
 
 ```php
-if (!isDone) {
+if (!$isDone) {
   throw new Exception('Erreur lors de la requête : '.$statement->errorInfo()[2]);
 }
 ```
@@ -260,3 +260,236 @@ $id = $connection->lastInsertId();
   - [ ] Inclure la connexion à la BdD,
   - [ ] Remplir les tables faisant le lien entre votre table d'ordinateur et celle de vos composants,
   - [ ] Renvoyer une erreur si une donnée n'est pas insérée (utiliser `throw new Exception("Un message d'erreur de votre choix")`)
+
+## 9. Formulaire de création / modification
+
+Dans cet exercice bien plus long et complet, nous allons permettre à un utilisateur de créer des composants, des périphériques et des ordinateurs, via des formulaires dédiés.
+Dans un premier temps, nous allons créer un CRUD (Create, Read, Update, Delete) pour les périphériques, puis pour les composants. Enfin, nous passerons au plus complexe : l'ordinateur.
+
+CRUD (Create, Read, Update, Delete) : désigne une interface d'administration permettant de gérer un type d'objet. Elle est composée de 3 éléments : 
+- La création / modification d'un objet,
+- L'affichage d'une liste des objets de ce type
+- La suppression
+
+Nous allons faire des sous-dossiers, et pour cela, nous allons devoir améliorer notre autoload :
+
+```php
+spl_autoload_register(function ($class) use ($root) {
+    // Dé-commenter la ligne ci-dessous si vous utilisez un Mac avec MAMP 
+    // $class = str_replace('\\', '/', $class);
+    require_once "$root/classes/$class.php";
+});
+```
+
+Dans tous nos fichiers de script, il nous faudra inclure cette variable `$root` (sinon, nos anciens scripts ne fonctionneront plus) comme suit :
+
+```php
+$root = '..'; // Ajouter autant de ../ que nécessaire pour revenir au dossier racine du projet
+// Par exemple, si vous travaillez dans un dossier crud/computer, il y a 2 dossier et $root devra alors valoir '../..'
+include '../autoload.php'; // On peut ensuite appeler notre autoload, qui aura le bon chemin pour charger nos classes
+```
+
+## 9.1. CRUD de l'objet périphérique
+
+Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+
+### 9.1.1. Liste des périphériques
+
+Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table de périphériques. 
+
+- Dans un fichier `crud/device/read.php`
+  - [ ] Faire une requête de récupération des périphériques (les trier par ordre alphabétique, par exemple)
+  - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
+  
+### 9.1.2. Suppression d'un périphérique
+
+Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
+
+- Dans un fichier `crud/device/delete.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Supprimer` dans le tableau de la page `crud/device/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+  - [ ] Cette page **doit** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`)
+    - [ ] Si ce paramètre n'est pas présent, renvoyer sur la liste (page `crud/device/read.php`)
+    - [ ] Si ce paramètre est présent, vérifier s'il existe dans la base de données
+      - [ ] Si ça n'est pas le cas, renvoyer sur la liste (page `crud/device/read.php`)
+      - [ ] Si c'est le cas, faire une requête pour supprimer l'entrée avec cet identifiant `id`
+    
+  - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
+
+### 9.1.3. Ajout / modification d'un périphérique  
+
+Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types de périphériques.
+
+- Dans un fichier `crud/device/edit.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Modifier` dans le tableau de la page `crud/device/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent, récupéré dans la BdD)
+    
+  - [ ] Ajouter des liens vers cette page avec le message `Nouveau NomDuType` dans la page `crud/device/read.php` (en dehors du tableau, soit avant la balise `<table>`, soit après, soit les deux)
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent)
+    
+  - [ ] Cette page **doit** être appelée avec un paramètre `type` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Instancier un objet du type `type` (`$device = new $_GET['type']()` ou équivalent)
+    - [ ] Expliquer avec un commentaire ce que fait cette ligne (avec un exemple, si vous préférez)
+    
+  - [ ] Cette page **peut** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Si ce paramètre est présent, remplir l'objet précédemment créé avec les données venues de la base
+    - Si ce paramètre n'est pas présent, cela signifie que l'on va créer un nouvel objet (nous n'avons donc pas de données à utiliser dans notre objet)
+  
+  - [ ] Ajouter un formulaire avec les champs nécessaires à l'ajout d'un périphérique dans la base de données
+    - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
+    - [ ] La méthode (attribut `method`) sera réglée sur `POST`
+    - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$device` (le champ `name` aura la valeur de `$device->getName()`, par exemple)
+  
+  - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
+    - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$device` pour le mettre à jour avec les valeurs du formulaire
+    - [ ] Utiliser cet objet `$device` pour créer une requête pour créer ou mettre à jour l'entrée de la BdD
+      - [ ] Si `$device->getId()` contient un nombre, alors il s'agit d'une mise à jour et il faut utiliser une requête `UPDATE` sur le périphérique avec l'identifiant `id`
+      - [ ] Si `$device->getId()` est vide, alors il s'agit d'une nouvelle entrée et il faut utiliser une requête `INSERT INTO`
+    - [ ] Une fois la requête effectuée, rediriger vers la page `crud/device/read.php`
+    
+  - [ ] Vérifier le fonctionnement du script
+
+## 9.2. CRUD de l'objet composant
+
+Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+
+### 9.2.1. Liste des composants
+
+Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table de composants. 
+
+- Dans un fichier `crud/component/read.php`
+  - [ ] Faire une requête de récupération des composants (les trier par ordre alphabétique, par exemple)
+  - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
+  
+### 9.2.2. Suppression d'un composant
+
+Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
+
+- Dans un fichier `crud/component/delete.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Supprimer` dans le tableau de la page `crud/component/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+  - [ ] Cette page **doit** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`)
+    - [ ] Si ce paramètre n'est pas présent, renvoyer sur la liste (page `crud/component/read.php`)
+    - [ ] Si ce paramètre est présent, vérifier s'il existe dans la base de données
+      - [ ] Si ça n'est pas le cas, renvoyer sur la liste (page `crud/component/read.php`)
+      - [ ] Si c'est le cas, faire une requête pour supprimer l'entrée avec cet identifiant `id`
+    
+  - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
+
+### 9.2.3. Ajout / modification d'un composant  
+
+Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types de composants.
+
+- Dans un fichier `crud/component/edit.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Modifier` dans le tableau de la page `crud/component/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent, récupéré dans la BdD)
+    
+  - [ ] Ajouter des liens vers cette page avec le message `Nouveau NomDuType` dans la page `crud/component/read.php` (en dehors du tableau, soit avant la balise `<table>`, soit après, soit les deux)
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent)
+    
+  - [ ] Cette page **doit** être appelée avec un paramètre `type` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Instancier un objet du type `type` (`$component = new $_GET['type']()` ou équivalent)
+    - [ ] Expliquer avec un commentaire ce que fait cette ligne (avec un exemple, si vous préférez)
+    
+  - [ ] Cette page **peut** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Si ce paramètre est présent, remplir l'objet précédemment créé avec les données venues de la base
+    - Si ce paramètre n'est pas présent, cela signifie que l'on va créer un nouvel objet (nous n'avons donc pas de données à utiliser dans notre objet)
+  
+  - [ ] Ajouter un formulaire avec les champs nécessaires à l'ajout d'un composant dans la base de données
+    - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
+    - [ ] La méthode (attribut `method`) sera réglée sur `POST`
+    - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$component` (le champ `name` aura la valeur de `$component->getName()`, par exemple)
+  
+  - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
+    - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$component` pour le mettre à jour avec les valeurs du formulaire
+    - [ ] Utiliser cet objet `$component` pour créer une requête pour créer ou mettre à jour l'entrée de la BdD
+      - [ ] Si `$component->getId()` contient un nombre, alors il s'agit d'une mise à jour et il faut utiliser une requête `UPDATE` sur le composant avec l'identifiant `id`
+      - [ ] Si `$component->getId()` est vide, alors il s'agit d'une nouvelle entrée et il faut utiliser une requête `INSERT INTO`
+    - [ ] Une fois la requête effectuée, rediriger vers la page `crud/component/read.php`
+    
+  - [ ] Vérifier le fonctionnement du script
+
+## 9.3. CRUD de l'objet ordinateur
+
+Dans chaque étape de cet exercice, lorsqu'il est demandé de créer un fichier, il faut : 
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+
+### 9.3.1. Liste des ordinateurs
+
+Dans un premier temps, nous allons afficher le contenu de notre BdD (Base de Données), et plus particulièrement de notre table d'ordinateurs. 
+
+- Dans un fichier `crud/computer/read.php`
+  - [ ] Faire une requête de récupération des ordinateurs (les trier par ordre alphabétique, par exemple)
+  - [ ] Afficher un tableau HTML avec l'intégralité des données (tous les champs de la table) et ajouter une colonne `actions` à votre tableau (elle contiendra des liens vers la modification et la suppression de cet élément)
+  
+### 9.3.2. Suppression d'un ordinateur
+
+Ici, nous allons gérer la suppression d'une entrée dans la base, via notre site.
+
+- Dans un fichier `crud/computer/delete.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Supprimer` dans le tableau de la page `crud/computer/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    
+  - [ ] Ajouter la variable `$root` avec la bonne valeur 
+  - [ ] Faire un `include` de l'autoload
+  - [ ] Inclure la connexion à la base de donnée
+  - [ ] Cette page **doit** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`)
+    - [ ] Si ce paramètre n'est pas présent, renvoyer sur la liste (page `crud/computer/read.php`)
+    - [ ] Si ce paramètre est présent, vérifier s'il existe dans la base de données
+      - [ ] Si ça n'est pas le cas, renvoyer sur la liste (page `crud/computer/read.php`)
+      - [ ] Si c'est le cas, faire une requête pour supprimer l'entrée avec cet identifiant `id`
+    
+  - [ ] Vérifier le fonctionnement du script (cliquer sur le lien `Supprimer` doit supprimer l'entrée dans le tableau et dans la base de données)
+
+### 9.3.3. Ajout / modification d'un ordinateur  
+
+Maintenant que nous pouvons supprimer des informations, voyons comment en ajouter et en modifier. Pour ces deux actions, nous n'allons utiliser qu'une seule page. De la même manière, nous n'allons utiliser qu'une page pour gérer tous les types d'ordinateurs.
+
+- Dans un fichier `crud/computer/edit.php`
+  - [ ] Ajouter un lien vers cette page avec le message `Modifier` dans le tableau de la page `crud/computer/read.php` (colonne `actions`)
+    - [ ] Ce lien **doit** contenir le paramètre `id` correspondant à l'identifiant de l'objet de la ligne du tableau
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent, récupéré dans la BdD)
+    
+  - [ ] Ajouter des liens vers cette page avec le message `Nouveau NomDuType` dans la page `crud/computer/read.php` (en dehors du tableau, soit avant la balise `<table>`, soit après, soit les deux)
+    - [ ] Ce lien **doit** contenir le paramètre `type` correspondant au type de l'objet (Keyboard, Mouse ou Speaker, ou équivalent)
+    
+  - [ ] Cette page **doit** être appelée avec un paramètre `type` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Instancier un objet du type `type` (`$computer = new $_GET['type']()` ou équivalent)
+    - [ ] Expliquer avec un commentaire ce que fait cette ligne (avec un exemple, si vous préférez)
+    
+  - [ ] Cette page **peut** être appelée avec un paramètre `id` dans l'url. Le récupérer (`$_GET`).
+    - [ ] Si ce paramètre est présent, remplir l'objet précédemment créé avec les données venues de la base
+    - Si ce paramètre n'est pas présent, cela signifie que l'on va créer un nouvel objet (nous n'avons donc pas de données à utiliser dans notre objet)
+  
+  - [ ] Ajouter un formulaire avec les champs nécessaires à l'ajout d'un ordinateur dans la base de données
+    - [ ] Son attribut `action` va être vide, afin de conserver les paramètres déjà présents dans l'url
+    - [ ] La méthode (attribut `method`) sera réglée sur `POST`
+    - [ ] Pour chaque champ, lui donner la valeur correspondante de l'objet `$computer` (le champ `name` aura la valeur de `$computer->getName()`, par exemple)
+  
+  - [ ] Juste avant l'affichage du formulaire, traiter les données du formulaire, s'il a été validé (soumis)
+    - [ ] Récupérer les différents champs et utiliser les setters de l'objet `$computer` pour le mettre à jour avec les valeurs du formulaire
+    - [ ] Utiliser cet objet `$computer` pour créer une requête pour créer ou mettre à jour l'entrée de la BdD
+      - [ ] Si `$computer->getId()` contient un nombre, alors il s'agit d'une mise à jour et il faut utiliser une requête `UPDATE` sur l'ordinateur avec l'identifiant `id`
+      - [ ] Si `$computer->getId()` est vide, alors il s'agit d'une nouvelle entrée et il faut utiliser une requête `INSERT INTO`
+    - [ ] Une fois la requête effectuée, rediriger vers la page `crud/computer/read.php`
+    
+  - [ ] Vérifier le fonctionnement du script
+
